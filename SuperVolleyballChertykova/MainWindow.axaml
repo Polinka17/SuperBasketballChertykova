@@ -1,0 +1,47 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="SuperVolleyballChertykova.MainWindow"
+        Title="СуперБаскетбол"
+        Icon="/Resources/logo.png"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel.Styles>
+                <Style Selector="Button">
+                    <Setter Property="Width" Value="100"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </StackPanel.Styles>
+            <Button Name="EditPlayerBtn" Content="Добавить" Click="EditPlayerBtn_OnClick" />
+            <Button Name="DelPlayerBtn" Content="Удалить" Click="DelPlayerBtn_OnClick"/>
+            <TextBox Name="SearchTBox" Watermark="Поиск" Margin="5" Width="150" Height="50" VerticalContentAlignment="Center" TextChanged="SearchTBox_OnTextChanged" />
+            <TextBlock Text="Фильтрация:" Margin="5" VerticalAlignment="Center"/>
+            <ComboBox Name="FilterCBox" Width="150" Margin="5" Height="50" SelectionChanged="FilterCBox_OnSelectionChanged" />
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+        <DataGrid Name="PlayerDGrid" x:CompileBindings="False" Height="600">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия игрока" Binding="{Binding PlayerSurname}" Width="*"/>
+                <DataGridTextColumn Header="Позиция" Binding="{Binding Position}" Width="*"/>
+                <DataGridTextColumn Header="Вес" Binding="{Binding Weight}" Width="*"/>
+                <DataGridTextColumn Header="Рост" Binding="{Binding Height}" Width="*"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday}" Width="*"/>
+                <DataGridTextColumn Header="Дата начала игры" Binding="{Binding GameStart}" Width="*"/>
+                <DataGridTextColumn Header="Команда" Binding="{Binding Team}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>
